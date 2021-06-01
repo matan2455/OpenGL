@@ -22,9 +22,16 @@ public class Wheel implements IRenderable {
         // Render Tire:
         glPushMatrix();
         glBegin(GL_QUADS);
+        Materials.setMaterialWheelTire();
+        new Cylinder().draw((float) Specification.WHEEL_RADIUS, (float) Specification.WHEEL_RADIUS, (float) Specification.WHEEL_WIDTH,20,1);
+        new Disk().draw( 0f,(float) Specification.WHEEL_RADIUS, 20,1);
+        Materials.setMaterialWheelRim();
+        new Disk().draw(0f,(float) Specification.WHEEL_RIM_RADIUS, 20,1);
         drawRims();
-        glTranslated(Specification.WHEEL_WIDTH,0,0);
-        drawRims();
+        Materials.setMaterialWheelTire();
+        new Disk().draw(0f, (float) Specification.WHEEL_RADIUS, 20,1);
+        Materials.setMaterialWheelRim();
+        new Disk().draw(0f ,(float) Specification.WHEEL_RIM_RADIUS, 20,1);
         glEnd();
         glPopMatrix();
 

@@ -5,6 +5,7 @@ import edu.cg.models.Box;
 import edu.cg.models.Empty;
 import edu.cg.models.IRenderable;
 import edu.cg.models.Locomotive.*;
+import edu.cg.util.glu.Project;
 
 import java.awt.*;
 
@@ -29,7 +30,7 @@ public class Viewer {
     // The Models that the viewer is viewing
     // TODO(0): You can add (sub)-models here to see how they are rendered in their local coordinate system.
 
-    private final IRenderable[] models = {new Locomotive(),new FrontBody(),new BackBody(),new Chimney(),new Wheel(), new FrontBody(),  new Chimney(), new Wheel(),
+    private final IRenderable[] models = {new Locomotive(),new BackBody(), new FrontBody(),new BackBody(),new Chimney(),new Wheel(),  new Chimney(), new Wheel(),
             new Roof(), new Empty()};
     private int currentModel = 0;
 
@@ -130,7 +131,8 @@ public class Viewer {
         double w, h;
         w = 3;
         h = 3 * ((double) height / width);
-        glOrtho(-w / 2, w / 2, -h / 2, h / 2, -2.0, 2.0);
+//        glOrtho(-w / 2, w / 2, -h / 2, h / 2, -2.0, 2.0);
+        Project.gluPerspective(70.0f,(float)width/(float)height,0.01f,90.0f);
     }
 
     /**
